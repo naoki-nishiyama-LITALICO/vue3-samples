@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<style type="text/css">
+</style>
+</head>
+
+<body>
+<div id="app">
+  <div>
+    身長 <input v-model="height" /> m
+  </div>
+  <div>
+    体重 <input v-model="weight" /> kg
+  </div>
+  <div>
+    <button @click="calcBmi">計算</button>
+  </div>
+  <hr>
+  <div>
+    BMIは {{ bmi }} です
+  </div>
+</div>
+
+<script type="module">
+import { createApp, ref } from 'https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.esm-browser.js';
+createApp({
+  setup() {
+    const height = ref('');
+    const weight = ref('');
+    const bmi = ref('-');
+
+    const calcBmi = () => {
+      const heightFloat = parseFloat(height.value) || 0;
+      const weightFloat = parseFloat(weight.value) || 0;
+      if (heightFloat == 0 || weightFloat == 0) {
+        bmi.value = '-';
+      } else {
+        bmi.value = weightFloat / (heightFloat * heightFloat);
+      }
+    };
+
+    return { height, weight, bmi, calcBmi };
+  }
+}).mount('#app');
+</script>
+
+</body>
+</html>

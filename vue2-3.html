@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<style type="text/css">
+</style>
+</head>
+
+<body>
+<div id="app">
+  <div>
+    身長 <input v-model="height" /> m
+  </div>
+  <div>
+    体重 <input v-model="weight" /> kg
+  </div>
+  <hr>
+  <div>
+    BMIは {{ bmi }} です
+  </div>
+</div>
+
+<script type="text/javascript">
+new Vue({
+  el: '#app',
+  data: {
+    height: '',
+    weight: '',
+  },
+  computed: {
+    bmi: function () {
+      const height = parseFloat(this.height) || 0;
+      const weight = parseFloat(this.weight) || 0;
+      if (height == 0 || weight == 0) return '-';
+      return weight / (height * height);
+    }
+  },
+});
+</script>
+
+</body>
+</html>

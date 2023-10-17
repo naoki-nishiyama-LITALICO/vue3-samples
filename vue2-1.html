@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<style type="text/css">
+a {
+  display: block;
+  width: 200px;
+  text-decoration: none;
+  border: 1px solid lightgray;
+}
+
+.image-duration {
+  position: relative;
+}
+
+img {
+  width: 100%
+}
+
+.duration {
+  position: absolute;
+  background: gray;
+  color: white;
+  bottom: 10px;
+  right: 10px;
+  padding: 0 4px;
+  font-size: 13px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  padding: 0px 10px;
+}
+
+.target-age {
+  background: lightgray;
+  color: gray;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0px 10px;
+  margin: 10px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+<div id="app">
+  <a :href="movieLink">
+    <div class="image-duration">
+      <img :src="image"></img>
+      <div class="duration">{{ duration }}秒</div>
+    </div>
+    <div class="title">{{ title }}</div>
+    <div class="target-age">{{ target_age }}</div>
+  </a>
+</div>
+
+<script type="text/javascript">
+new Vue({
+  el: '#app',
+  data: {
+    code: "P0jCmV4VXvcXzqkA",
+    title: "遊びのなかで「動作を表すことば」を言う",
+    description: "楽しく遊ぶなかで、お子さまが自然に「動作を表すことば」を「言える」ように促すポイントをお伝えします。\n「単語」を言える段階のお子さまが対象です。\n\n\n＜動画のねらい＞\n・提示されたものが「何をしているか」を言う",
+    image: "https://staging.h-navi.jp/uploads/plus/hint_videos/images/hint_video_thumbnail_23.png",
+    target_age: "未就学",
+    duration: 188,
+  },
+  computed: {
+    movieLink: function () {
+      return "https://staging.h-navi.jp/plus/videos/" + this.code;
+    }
+  },
+});
+</script>
+
+</body>
+</html>
